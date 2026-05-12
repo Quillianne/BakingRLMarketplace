@@ -5,7 +5,9 @@
       "id": "quillianne",
       "name": "Quillianne",
       "verified": true,
-      "packageSigningKeys": []
+      "packageSigningKeys": [
+        "3ZK2t4SPZKufX40dwRPSDP+y2B2+L2Pq3PQ+4HJJ+3w="
+      ]
     }
   ]
 }

@@ -1,0 +1,54 @@
+{
+  "schema": "bakingrl.marketplace-package/1",
+  "id": "com.bakingrl.deja-vu",
+  "developerId": "quillianne",
+  "repo": "https://github.com/Quillianne/BakingRLPlugins",
+  "listingUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.0/deja-vu/marketplace/listing.json",
+  "approvedVersions": [
+    {
+      "version": "1.0.0",
+      "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.0/com.bakingrl.deja-vu-1.0.0.brlp",
+      "bundleSha256": "5fdcb733fb70e3e7eda7fe25cd81a6b635af21c1e7993970abe6465c68847b83",
+      "signaturePublicKey": "3ZK2t4SPZKufX40dwRPSDP+y2B2+L2Pq3PQ+4HJJ+3w=",
+      "runtimeApi": "0.4.0",
+      "review": {
+        "status": "approved",
+        "reviewedAt": "2026-05-12T16:41:21.084Z",
+        "permissions": {
+          "bus": {
+            "read": [
+              "UpdateState",
+              "MatchCreated",
+              "MatchInitialized",
+              "MatchDestroyed",
+              "plugin.com.bakingrl.deja-vu.state"
+            ],
+            "publish": [
+              "plugin.com.bakingrl.deja-vu.*"
+            ]
+          },
+          "registry": {
+            "read": [
+              "plugin.com.bakingrl.deja-vu.*"
+            ],
+            "write": [
+              "plugin.com.bakingrl.deja-vu.*"
+            ]
+          },
+          "network": {
+            "http": [],
+            "websocket": []
+          },
+          "storage": {
+            "read": [
+              "plugin://self/*"
+            ],
+            "write": [
+              "plugin://self/*"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

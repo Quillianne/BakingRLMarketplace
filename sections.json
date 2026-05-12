@@ -1,7 +1,14 @@
 {
   "schema": "bakingrl.marketplace-sections/1",
   "sections": {
-    "recommended": [],
-    "new": []
+    "recommended": [
+      "com.bakingrl.cast-package",
+      "com.bakingrl.cage-stats"
+    ],
+    "new": [
+      "com.bakingrl.cast-package",
+      "com.bakingrl.cage-stats",
+      "com.bakingrl.deja-vu"
+    ]
   }
 }

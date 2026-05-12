@@ -1,0 +1,58 @@
+{
+  "schema": "bakingrl.marketplace-package/1",
+  "id": "com.bakingrl.cage-stats",
+  "developerId": "quillianne",
+  "repo": "https://github.com/Quillianne/BakingRLPlugins",
+  "listingUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.0/cage-stats/marketplace/listing.json",
+  "approvedVersions": [
+    {
+      "version": "1.0.0",
+      "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.0/com.bakingrl.cage-stats-1.0.0.brlp",
+      "bundleSha256": "5a5affc9ae6176031e7b86478f3a76056297c3eef78b585fe5a92f5b20aae5ba",
+      "signaturePublicKey": "3ZK2t4SPZKufX40dwRPSDP+y2B2+L2Pq3PQ+4HJJ+3w=",
+      "runtimeApi": "0.4.0",
+      "review": {
+        "status": "approved",
+        "reviewedAt": "2026-05-12T16:41:19.975Z",
+        "permissions": {
+          "bus": {
+            "read": [
+              "UpdateState",
+              "BallHit",
+              "CountdownBegin",
+              "CrossbarHit",
+              "GoalScored",
+              "MatchCreated",
+              "MatchInitialized",
+              "StatfeedEvent",
+              "plugin.com.bakingrl.cage-stats.state"
+            ],
+            "publish": [
+              "plugin.com.bakingrl.cage-stats.*"
+            ]
+          },
+          "registry": {
+            "read": [
+              "plugin.com.bakingrl.cage-stats.*"
+            ],
+            "write": [
+              "plugin.com.bakingrl.cage-stats.*"
+            ]
+          },
+          "network": {
+            "http": [],
+            "websocket": []
+          },
+          "storage": {
+            "read": [
+              "plugin://self/*"
+            ],
+            "write": [
+              "plugin://self/*"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

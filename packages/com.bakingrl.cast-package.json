@@ -1,0 +1,59 @@
+{
+  "schema": "bakingrl.marketplace-package/1",
+  "id": "com.bakingrl.cast-package",
+  "developerId": "quillianne",
+  "repo": "https://github.com/Quillianne/BakingRLPlugins",
+  "listingUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.0/cast-package/marketplace/listing.json",
+  "approvedVersions": [
+    {
+      "version": "1.0.0",
+      "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.0/com.bakingrl.cast-package-1.0.0.brlp",
+      "bundleSha256": "72181ad98be5b6ada17723e9dab577776e133a308e9804d24dd3a94403e09227",
+      "signaturePublicKey": "3ZK2t4SPZKufX40dwRPSDP+y2B2+L2Pq3PQ+4HJJ+3w=",
+      "runtimeApi": "0.4.0",
+      "review": {
+        "status": "approved",
+        "reviewedAt": "2026-05-12T16:41:21.962Z",
+        "permissions": {
+          "bus": {
+            "read": [
+              "UpdateState",
+              "ClockUpdatedSeconds",
+              "CountdownBegin",
+              "GoalScored",
+              "MatchCreated",
+              "MatchInitialized",
+              "MatchEnded",
+              "RoundStarted",
+              "StatfeedEvent",
+              "plugin.com.bakingrl.cast-package.state"
+            ],
+            "publish": [
+              "plugin.com.bakingrl.cast-package.*"
+            ]
+          },
+          "registry": {
+            "read": [
+              "plugin.com.bakingrl.cast-package.state"
+            ],
+            "write": [
+              "plugin.com.bakingrl.cast-package.*"
+            ]
+          },
+          "network": {
+            "http": [],
+            "websocket": []
+          },
+          "storage": {
+            "read": [
+              "plugin://self/*"
+            ],
+            "write": [
+              "plugin://self/*"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
