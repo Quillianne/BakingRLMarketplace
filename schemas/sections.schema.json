@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BakingRL Marketplace Sections",
+  "type": "object",
+  "required": ["schema", "sections"],
+  "properties": {
+    "schema": { "const": "bakingrl.marketplace-sections/1" },
+    "sections": {
+      "type": "object",
+      "required": ["recommended", "new"],
+      "properties": {
+        "recommended": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "new": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

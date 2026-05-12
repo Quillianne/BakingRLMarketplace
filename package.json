@@ -1,0 +1,13 @@
+{
+  "name": "bakingrl-marketplace",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/marketplace.mjs validate",
+    "build": "node scripts/marketplace.mjs build",
+    "sign": "node scripts/marketplace.mjs sign",
+    "keygen": "node scripts/marketplace.mjs keygen"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,6 @@
+node_modules/
+public/
+.DS_Store
+.env
+.env.*
+bakingrl-marketplace-signing-key.json

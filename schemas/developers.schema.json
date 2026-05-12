@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BakingRL Marketplace Developers",
+  "type": "object",
+  "required": ["schema", "developers"],
+  "properties": {
+    "schema": { "const": "bakingrl.marketplace-developers/1" },
+    "developers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "verified", "packageSigningKeys"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "verified": { "type": "boolean" },
+          "packageSigningKeys": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "bakingrl.marketplace-developers/1",
+  "developers": [
+    {
+      "id": "quillianne",
+      "name": "Quillianne",
+      "verified": true,
+      "packageSigningKeys": []
+    }
+  ]
+}
