@@ -8,7 +8,7 @@
     {
       "version": "1.0.0",
       "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.0/com.bakingrl.deja-vu-1.0.0.brlp",
-      "bundleSha256": "5fdcb733fb70e3e7eda7fe25cd81a6b635af21c1e7993970abe6465c68847b83",
+      "bundleSha256": "377b06e711a5bf317c3b07c8cd848589d6e7fda3dbab99da993fe0a0374a27c5",
       "signaturePublicKey": "3ZK2t4SPZKufX40dwRPSDP+y2B2+L2Pq3PQ+4HJJ+3w=",
       "runtimeApi": "0.4.0",
       "review": {

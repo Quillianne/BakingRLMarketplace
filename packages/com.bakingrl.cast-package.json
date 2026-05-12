@@ -8,7 +8,7 @@
     {
       "version": "1.0.0",
       "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.0/com.bakingrl.cast-package-1.0.0.brlp",
-      "bundleSha256": "72181ad98be5b6ada17723e9dab577776e133a308e9804d24dd3a94403e09227",
+      "bundleSha256": "3ddb3cec62a605c15da80f8cf8cbc4c4aac95206fda4f1e9353f4d6b2a2bc9c6",
       "signaturePublicKey": "3ZK2t4SPZKufX40dwRPSDP+y2B2+L2Pq3PQ+4HJJ+3w=",
       "runtimeApi": "0.4.0",
       "review": {
