@@ -3,7 +3,7 @@
   "id": "com.bakingrl.cast-package",
   "developerId": "quillianne",
   "repo": "https://github.com/Quillianne/BakingRLPlugins",
-  "listingUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.0/cast-package/marketplace/listing.json",
+  "listingUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.2/cast-package/marketplace/listing.json",
   "approvedVersions": [
     {
       "version": "1.0.0",
@@ -34,6 +34,73 @@
           },
           "registry": {
             "read": [
+              "plugin.com.bakingrl.cast-package.state"
+            ],
+            "write": [
+              "plugin.com.bakingrl.cast-package.*"
+            ]
+          },
+          "network": {
+            "http": [],
+            "websocket": []
+          },
+          "storage": {
+            "read": [
+              "plugin://self/*"
+            ],
+            "write": [
+              "plugin://self/*"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "version": "1.0.2",
+      "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.2/com.bakingrl.cast-package-1.0.2.brlp",
+      "bundleSha256": "bfe2bb7ed73e4a570511ae7e82031096d21f47a212c360c6302f4834577c4d0c",
+      "signaturePublicKey": "3ZK2t4SPZKufX40dwRPSDP+y2B2+L2Pq3PQ+4HJJ+3w=",
+      "runtimeApi": "0.4.0",
+      "review": {
+        "status": "approved",
+        "reviewedAt": "2026-05-16T21:23:22Z",
+        "permissions": {
+          "bus": {
+            "read": [
+              "UpdateState",
+              "BallHit",
+              "ClockUpdatedSeconds",
+              "CountdownBegin",
+              "CrossbarHit",
+              "GoalScored",
+              "GoalReplayEnd",
+              "GoalReplayStart",
+              "MatchCreated",
+              "MatchDestroyed",
+              "MatchInitialized",
+              "MatchEnded",
+              "MatchPaused",
+              "MatchUnpaused",
+              "PodiumStart",
+              "ReplayCreated",
+              "RoundStarted",
+              "StatfeedEvent",
+              "plugin.com.bakingrl.cast-package.cage-stats",
+              "plugin.com.bakingrl.cast-package.player-stats",
+              "plugin.com.bakingrl.cast-package.regie",
+              "plugin.com.bakingrl.cast-package.sequence",
+              "plugin.com.bakingrl.cast-package.state"
+            ],
+            "publish": [
+              "plugin.com.bakingrl.cast-package.*"
+            ]
+          },
+          "registry": {
+            "read": [
+              "plugin.com.bakingrl.cast-package.cage-stats",
+              "plugin.com.bakingrl.cast-package.player-stats",
+              "plugin.com.bakingrl.cast-package.regie",
+              "plugin.com.bakingrl.cast-package.sequence",
               "plugin.com.bakingrl.cast-package.state"
             ],
             "write": [

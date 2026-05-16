@@ -2,12 +2,10 @@
   "schema": "bakingrl.marketplace-sections/1",
   "sections": {
     "recommended": [
-      "com.bakingrl.cast-package",
-      "com.bakingrl.cage-stats"
+      "com.bakingrl.cast-package"
     ],
     "new": [
       "com.bakingrl.cast-package",
-      "com.bakingrl.cage-stats",
       "com.bakingrl.deja-vu"
     ]
   }
