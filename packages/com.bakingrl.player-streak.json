@@ -1,14 +1,14 @@
 {
   "schema": "bakingrl.marketplace-package/1",
-  "id": "com.bakingrl.deja-vu",
+  "id": "com.bakingrl.player-streak",
   "developerId": "quillianne",
   "repo": "https://github.com/Quillianne/BakingRLPlugins",
-  "listingUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.3/deja-vu/marketplace/listing.json",
+  "listingUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.3/player-streak/marketplace/listing.json",
   "approvedVersions": [
     {
-      "version": "1.0.3",
-      "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.3/com.bakingrl.deja-vu-1.0.3.brlp",
-      "bundleSha256": "c3fba443f12c02541f0ca153f0b99dda97a07d24a913321fbf60d122d5ff28b1",
+      "version": "1.0.0",
+      "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.3/com.bakingrl.player-streak-1.0.0.brlp",
+      "bundleSha256": "5b9a30b30b48464ffc978efafff4a8071e706048fb0231e8a2938b1aa882d452",
       "signaturePublicKey": "3ZK2t4SPZKufX40dwRPSDP+y2B2+L2Pq3PQ+4HJJ+3w=",
       "runtimeApi": "0.4.0",
       "review": {
@@ -17,22 +17,26 @@
         "permissions": {
           "bus": {
             "read": [
-              "UpdateState",
               "MatchCreated",
               "MatchInitialized",
+              "MatchEnded",
               "MatchDestroyed",
-              "plugin.com.bakingrl.deja-vu.state"
+              "plugin.com.bakingrl.cast-package.sequence",
+              "plugin.com.bakingrl.cast-package.player-stats",
+              "plugin.com.bakingrl.player-streak.state"
             ],
             "publish": [
-              "plugin.com.bakingrl.deja-vu.*"
+              "plugin.com.bakingrl.player-streak.*"
             ]
           },
           "registry": {
             "read": [
-              "plugin.com.bakingrl.deja-vu.*"
+              "plugin.com.bakingrl.cast-package.sequence",
+              "plugin.com.bakingrl.cast-package.player-stats",
+              "plugin.com.bakingrl.player-streak.*"
             ],
             "write": [
-              "plugin.com.bakingrl.deja-vu.*"
+              "plugin.com.bakingrl.player-streak.*"
             ]
           },
           "network": {

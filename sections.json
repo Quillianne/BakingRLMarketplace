@@ -6,7 +6,8 @@
     ],
     "new": [
       "com.bakingrl.cast-package",
-      "com.bakingrl.deja-vu"
+      "com.bakingrl.deja-vu",
+      "com.bakingrl.player-streak"
     ]
   }
 }
