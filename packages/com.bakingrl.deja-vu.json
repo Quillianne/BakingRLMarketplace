@@ -3,17 +3,17 @@
   "id": "com.bakingrl.deja-vu",
   "developerId": "quillianne",
   "repo": "https://github.com/Quillianne/BakingRLPlugins",
-  "listingUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.3/deja-vu/marketplace/listing.json",
+  "listingUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.4/deja-vu/marketplace/listing.json",
   "approvedVersions": [
     {
-      "version": "1.0.3",
-      "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.3/com.bakingrl.deja-vu-1.0.3.brlp",
-      "bundleSha256": "c3fba443f12c02541f0ca153f0b99dda97a07d24a913321fbf60d122d5ff28b1",
+      "version": "1.0.4",
+      "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.4/com.bakingrl.deja-vu-1.0.4.brlp",
+      "bundleSha256": "e13e60b4f984cf7ff3e8e878992123f31249a8a230b65decb4ab59035c92e584",
       "signaturePublicKey": "3ZK2t4SPZKufX40dwRPSDP+y2B2+L2Pq3PQ+4HJJ+3w=",
-      "runtimeApi": "0.4.0",
+      "runtimeApi": "1.0.0",
       "review": {
         "status": "approved",
-        "reviewedAt": "2026-05-17T13:16:33Z",
+        "reviewedAt": "2026-06-16T10:38:39Z",
         "permissions": {
           "bus": {
             "read": [

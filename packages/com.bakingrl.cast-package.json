@@ -3,17 +3,17 @@
   "id": "com.bakingrl.cast-package",
   "developerId": "quillianne",
   "repo": "https://github.com/Quillianne/BakingRLPlugins",
-  "listingUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.3/cast-package/marketplace/listing.json",
+  "listingUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.4/cast-package/marketplace/listing.json",
   "approvedVersions": [
     {
-      "version": "1.0.3",
-      "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.3/com.bakingrl.cast-package-1.0.3.brlp",
-      "bundleSha256": "bfbe85947d4e23a78f51ca0a72ad829a7535a587f6748f16d736b0cf95a5bc6b",
+      "version": "1.0.4",
+      "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.4/com.bakingrl.cast-package-1.0.4.brlp",
+      "bundleSha256": "282a528ae4e5f0b3e0a2e7afc65e446be2e0c519684540658f781ad417edb415",
       "signaturePublicKey": "3ZK2t4SPZKufX40dwRPSDP+y2B2+L2Pq3PQ+4HJJ+3w=",
-      "runtimeApi": "0.4.0",
+      "runtimeApi": "1.0.0",
       "review": {
         "status": "approved",
-        "reviewedAt": "2026-05-17T13:16:33Z",
+        "reviewedAt": "2026-06-16T10:38:39Z",
         "permissions": {
           "bus": {
             "read": [

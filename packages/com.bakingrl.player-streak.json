@@ -3,17 +3,17 @@
   "id": "com.bakingrl.player-streak",
   "developerId": "quillianne",
   "repo": "https://github.com/Quillianne/BakingRLPlugins",
-  "listingUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.3/player-streak/marketplace/listing.json",
+  "listingUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.4/player-streak/marketplace/listing.json",
   "approvedVersions": [
     {
-      "version": "1.0.0",
-      "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.3/com.bakingrl.player-streak-1.0.0.brlp",
-      "bundleSha256": "5b9a30b30b48464ffc978efafff4a8071e706048fb0231e8a2938b1aa882d452",
+      "version": "1.0.4",
+      "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.4/com.bakingrl.player-streak-1.0.4.brlp",
+      "bundleSha256": "467b336b98053972764818548a67cf2ca56c32a443877a531b78c890a57f60bb",
       "signaturePublicKey": "3ZK2t4SPZKufX40dwRPSDP+y2B2+L2Pq3PQ+4HJJ+3w=",
-      "runtimeApi": "0.4.0",
+      "runtimeApi": "1.0.0",
       "review": {
         "status": "approved",
-        "reviewedAt": "2026-05-17T13:16:33Z",
+        "reviewedAt": "2026-06-16T10:38:39Z",
         "permissions": {
           "bus": {
             "read": [
