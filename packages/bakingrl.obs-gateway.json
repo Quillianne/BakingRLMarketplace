@@ -1,0 +1,44 @@
+{
+  "schema": "bakingrl.marketplace-package/1",
+  "id": "bakingrl.obs-gateway",
+  "developerId": "quillianne",
+  "repo": "https://github.com/Quillianne/BakingRLPlugins",
+  "listingUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.5/obs-gateway/marketplace/listing.json",
+  "approvedVersions": [
+    {
+      "version": "1.0.5",
+      "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.5/bakingrl.obs-gateway-1.0.5.brlp",
+      "bundleSha256": "1f05ca7e56eabd184bfed892ca42ce472ce6f3cc5abd114d0af54e5474bb3ea4",
+      "signaturePublicKey": "3ZK2t4SPZKufX40dwRPSDP+y2B2+L2Pq3PQ+4HJJ+3w=",
+      "runtimeApi": "2.0.0",
+      "review": {
+        "status": "approved",
+        "reviewedAt": "2026-06-17T15:50:46Z",
+        "permissions": {
+          "bus": {
+            "read": [],
+            "publish": []
+          },
+          "registry": {
+            "read": [],
+            "write": []
+          },
+          "network": {
+            "http": [
+              "http://127.0.0.1:*",
+              "http://localhost:*"
+            ],
+            "websocket": [
+              "ws://127.0.0.1:*",
+              "ws://localhost:*"
+            ]
+          },
+          "storage": {
+            "read": [],
+            "write": []
+          }
+        }
+      }
+    }
+  ]
+}

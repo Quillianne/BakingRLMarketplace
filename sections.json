@@ -2,12 +2,14 @@
   "schema": "bakingrl.marketplace-sections/1",
   "sections": {
     "recommended": [
-      "com.bakingrl.cast-package"
+      "com.bakingrl.cast-package",
+      "bakingrl.obs-gateway"
     ],
     "new": [
       "com.bakingrl.cast-package",
       "com.bakingrl.deja-vu",
-      "com.bakingrl.player-streak"
+      "com.bakingrl.player-streak",
+      "bakingrl.obs-gateway"
     ]
   }
 }
