@@ -1,0 +1,128 @@
+{
+  "schema": "bakingrl.marketplace-package/2",
+  "id": "bakingrl.broadcast-visuals",
+  "developerId": "quillianne",
+  "status": "active",
+  "repo": "https://github.com/Quillianne/BakingRLPlugins",
+  "listing": {
+    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v2.0.0/broadcast-visuals/marketplace/listing.json",
+    "snapshotSha256": "e1f9698a3caf02fa5853c7519dfc408ec2ae59a30b7ea875d7467b65bb5dc2b3",
+    "snapshot": {
+      "schema": "bakingrl.marketplace-listing/2",
+      "packageId": "bakingrl.broadcast-visuals",
+      "displayName": "Broadcast Visuals",
+      "shortDescription": "First-party scoreboard, player, event and statistics visuals for Layout Studio.",
+      "longDescription": "Broadcast Visuals contributes a cohesive set of responsive Rocket League graphics to Layout Studio: scoreboard, goal and victory scenes, player boost and live stats, team events, cage maps and fullscreen statistics. Broadcast controls remain separate from saved overlay layouts.",
+      "tags": [
+        "visuals",
+        "overlay",
+        "scoreboard",
+        "broadcast"
+      ],
+      "repo": "https://github.com/Quillianne/BakingRLPlugins",
+      "media": {
+        "icon": null,
+        "banner": null,
+        "screenshots": []
+      },
+      "links": {
+        "docs": "https://github.com/Quillianne/BakingRLPlugins/tree/main/broadcast-visuals#readme",
+        "support": "https://github.com/Quillianne/BakingRLPlugins/issues"
+      }
+    }
+  },
+  "versions": [
+    {
+      "version": "1.0.0",
+      "status": "active",
+      "channel": "stable",
+      "runtimeApi": "2.3.0",
+      "minBakingrlVersion": "0.9.0",
+      "runtime": {
+        "node": true,
+        "sidecars": [],
+        "webviews": [
+          {
+            "id": "broadcastControls",
+            "kind": "tool"
+          }
+        ]
+      },
+      "dependencies": [
+        {
+          "packageId": "bakingrl.stats-extended",
+          "version": "^1.0.0",
+          "optional": false
+        },
+        {
+          "packageId": "bakingrl.layout-studio",
+          "version": "^1.0.0",
+          "optional": false
+        }
+      ],
+      "permissions": {
+        "bus": {
+          "read": [
+            "UpdateState",
+            "ClockUpdatedSeconds",
+            "CountdownBegin",
+            "GoalScored",
+            "GoalReplayEnd",
+            "GoalReplayStart",
+            "MatchCreated",
+            "MatchDestroyed",
+            "MatchInitialized",
+            "MatchEnded",
+            "MatchPaused",
+            "MatchUnpaused",
+            "PodiumStart",
+            "ReplayCreated",
+            "RoundStarted",
+            "StatfeedEvent",
+            "plugin.bakingrl.stats-extended.*",
+            "plugin.bakingrl.broadcast-visuals.*"
+          ],
+          "publish": [
+            "plugin.bakingrl.broadcast-visuals.*"
+          ]
+        },
+        "registry": {
+          "read": [
+            "plugin.bakingrl.stats-extended.*",
+            "plugin.bakingrl.broadcast-visuals.*"
+          ],
+          "write": [
+            "plugin.bakingrl.broadcast-visuals.*"
+          ]
+        },
+        "network": {
+          "http": [],
+          "websocket": [],
+          "listen": []
+        },
+        "storage": {
+          "read": [],
+          "write": []
+        }
+      },
+      "nativeCapabilities": {
+        "node": {
+          "platforms": [
+            "any"
+          ]
+        },
+        "sidecars": [],
+        "surfaces": []
+      },
+      "artifacts": [
+        {
+          "platform": "any",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v2.0.0/bakingrl.broadcast-visuals-1.0.0.brlp",
+          "bundleSha256": "6b80efda6b049c4eb4ec8bea417e866e1fe8a0ce05d2a7af6f53f1439ba46be4",
+          "signingKeyId": "quillianne-release-1"
+        }
+      ],
+      "reviewedAt": "2026-07-16T17:24:41Z"
+    }
+  ]
+}

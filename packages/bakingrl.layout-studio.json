@@ -1,0 +1,108 @@
+{
+  "schema": "bakingrl.marketplace-package/2",
+  "id": "bakingrl.layout-studio",
+  "developerId": "quillianne",
+  "status": "active",
+  "repo": "https://github.com/Quillianne/BakingRLPlugins",
+  "listing": {
+    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v2.0.0/layout-studio/marketplace/listing.json",
+    "snapshotSha256": "c4a9d98bc3fd51a58d0a0da22bdd8590641af59a2c6077878ebfd8c0db7c6039",
+    "snapshot": {
+      "schema": "bakingrl.marketplace-listing/2",
+      "packageId": "bakingrl.layout-studio",
+      "displayName": "Layout Studio",
+      "shortDescription": "Compose reusable broadcast layouts from native blocks and plugin visuals.",
+      "longDescription": "Layout Studio owns BakingRL layout documents and provides a focused editor for arranging plugin visuals, text, images and shapes. Its stable service contract is shared by in-game overlays and OBS Gateway, so one saved layout is rendered consistently everywhere.",
+      "tags": [
+        "layout",
+        "overlay",
+        "editor",
+        "broadcast"
+      ],
+      "repo": "https://github.com/Quillianne/BakingRLPlugins",
+      "media": {
+        "icon": null,
+        "banner": null,
+        "screenshots": []
+      },
+      "links": {
+        "docs": "https://github.com/Quillianne/BakingRLPlugins/tree/main/layout-studio#readme",
+        "support": "https://github.com/Quillianne/BakingRLPlugins/issues"
+      }
+    }
+  },
+  "versions": [
+    {
+      "version": "1.0.0",
+      "status": "active",
+      "channel": "stable",
+      "runtimeApi": "2.3.0",
+      "minBakingrlVersion": "0.9.0",
+      "runtime": {
+        "node": true,
+        "sidecars": [],
+        "webviews": [
+          {
+            "id": "studio",
+            "kind": "tool"
+          }
+        ]
+      },
+      "dependencies": [
+        {
+          "packageId": "bakingrl.stats-extended",
+          "version": "^1.0.0",
+          "optional": false
+        }
+      ],
+      "permissions": {
+        "bus": {
+          "read": [
+            "UpdateState"
+          ],
+          "publish": [
+            "plugin.bakingrl.layout-studio.changed"
+          ]
+        },
+        "registry": {
+          "read": [
+            "plugin.bakingrl.stats-extended.*",
+            "plugin.bakingrl.broadcast-visuals.*"
+          ],
+          "write": []
+        },
+        "network": {
+          "http": [],
+          "websocket": [],
+          "listen": []
+        },
+        "storage": {
+          "read": [
+            "layouts.json"
+          ],
+          "write": [
+            "layouts.json"
+          ]
+        }
+      },
+      "nativeCapabilities": {
+        "node": {
+          "platforms": [
+            "any"
+          ]
+        },
+        "sidecars": [],
+        "surfaces": []
+      },
+      "artifacts": [
+        {
+          "platform": "any",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v2.0.0/bakingrl.layout-studio-1.0.0.brlp",
+          "bundleSha256": "bb6da1f084577abc737b759f106990629aec94ecc8eefffda1cb57846e69e530",
+          "signingKeyId": "quillianne-release-1"
+        }
+      ],
+      "reviewedAt": "2026-07-16T17:24:41Z"
+    }
+  ]
+}

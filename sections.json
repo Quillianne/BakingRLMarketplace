@@ -2,15 +2,24 @@
   "schema": "bakingrl.marketplace-sections/2",
   "sections": {
     "recommended": [
-      "com.bakingrl.cast-package",
+      "bakingrl.stats-extended",
+      "bakingrl.layout-studio",
+      "bakingrl.broadcast-visuals",
       "bakingrl.obs-gateway"
     ],
     "new": [
-      "com.bakingrl.cast-package",
+      "bakingrl.stats-extended",
+      "bakingrl.layout-studio",
+      "bakingrl.broadcast-visuals",
+      "bakingrl.obs-gateway",
       "com.bakingrl.deja-vu",
-      "com.bakingrl.player-streak",
-      "bakingrl.obs-gateway"
+      "com.bakingrl.player-streak"
     ],
-    "firstRun": []
+    "firstRun": [
+      "bakingrl.stats-extended",
+      "bakingrl.layout-studio",
+      "bakingrl.broadcast-visuals",
+      "bakingrl.obs-gateway"
+    ]
   }
 }

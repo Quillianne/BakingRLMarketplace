@@ -5,13 +5,13 @@
   "status": "active",
   "repo": "https://github.com/Quillianne/BakingRLPlugins",
   "listing": {
-    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.5/deja-vu/marketplace/listing.json",
-    "snapshotSha256": "fd05f13202cb2ed0c4025e1043b34701107ac6809542ed5ab51bc4984ea56dfe",
+    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v2.0.0/deja-vu/marketplace/listing.json",
+    "snapshotSha256": "d5e9fbf2487da429e70e1e3fe1329be5742e395d110a04495a4069298990cf27",
     "snapshot": {
       "schema": "bakingrl.marketplace-listing/2",
       "packageId": "com.bakingrl.deja-vu",
       "displayName": "Deja Vu",
-      "shortDescription": "Show previous encounter counts for players in the current match.",
+      "shortDescription": "Show previous encounter counts as a Layout Studio visual.",
       "longDescription": "Deja Vu keeps a local match encounter history and renders a compact transparent visual with current players and how often they have appeared before. It is useful for recurring lobbies, leagues, showmatches, and long broadcast sessions where previous meetings matter.",
       "tags": [
         "history",
@@ -95,6 +95,78 @@
         }
       ],
       "reviewedAt": "2026-06-17T15:50:46Z"
+    },
+    {
+      "version": "2.0.0",
+      "status": "active",
+      "channel": "stable",
+      "runtimeApi": "2.3.0",
+      "minBakingrlVersion": "0.9.0",
+      "runtime": {
+        "node": true,
+        "sidecars": [],
+        "webviews": []
+      },
+      "dependencies": [
+        {
+          "packageId": "bakingrl.layout-studio",
+          "version": "^1.0.0",
+          "optional": false
+        }
+      ],
+      "permissions": {
+        "bus": {
+          "read": [
+            "UpdateState",
+            "MatchCreated",
+            "MatchInitialized",
+            "MatchDestroyed",
+            "plugin.com.bakingrl.deja-vu.state"
+          ],
+          "publish": [
+            "plugin.com.bakingrl.deja-vu.state"
+          ]
+        },
+        "registry": {
+          "read": [
+            "plugin.com.bakingrl.deja-vu.state"
+          ],
+          "write": [
+            "plugin.com.bakingrl.deja-vu.state"
+          ]
+        },
+        "network": {
+          "http": [],
+          "websocket": [],
+          "listen": []
+        },
+        "storage": {
+          "read": [
+            "deja-vu-state.json"
+          ],
+          "write": [
+            "deja-vu-state.json"
+          ]
+        }
+      },
+      "nativeCapabilities": {
+        "node": {
+          "platforms": [
+            "any"
+          ]
+        },
+        "sidecars": [],
+        "surfaces": []
+      },
+      "artifacts": [
+        {
+          "platform": "any",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v2.0.0/com.bakingrl.deja-vu-2.0.0.brlp",
+          "bundleSha256": "f47d35d3e0f271f9fec963623f5852002a15206fad9d7561c7777f8f54d57964",
+          "signingKeyId": "quillianne-release-1"
+        }
+      ],
+      "reviewedAt": "2026-07-16T17:24:41Z"
     }
   ]
 }

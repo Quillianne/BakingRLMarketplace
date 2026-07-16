@@ -2,7 +2,7 @@
   "schema": "bakingrl.marketplace-package/2",
   "id": "com.bakingrl.cast-package",
   "developerId": "quillianne",
-  "status": "active",
+  "status": "yanked",
   "repo": "https://github.com/Quillianne/BakingRLPlugins",
   "listing": {
     "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.5/cast-package/marketplace/listing.json",

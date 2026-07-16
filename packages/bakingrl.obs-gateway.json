@@ -5,14 +5,14 @@
   "status": "active",
   "repo": "https://github.com/Quillianne/BakingRLPlugins",
   "listing": {
-    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.5/obs-gateway/marketplace/listing.json",
-    "snapshotSha256": "739292c4ee573bf70fbd3f03a234bbc4f7e9c72104c2aad2df3b6bb25d886545",
+    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v2.0.0/obs-gateway/marketplace/listing.json",
+    "snapshotSha256": "e334208d603e47d203abc2e9dd17dcd8f0c561aa07362d50fe17d3c7ae8a6677",
     "snapshot": {
       "schema": "bakingrl.marketplace-listing/2",
       "packageId": "bakingrl.obs-gateway",
       "displayName": "OBS Gateway",
-      "shortDescription": "Serve BakingRL overlay streams through a first-party OBS gateway plugin.",
-      "longDescription": "OBS Gateway runs a trusted first-party V4 service that starts a local HTTP gateway from plugin settings. It exposes health, snapshot, Server-Sent Events, and WebSocket routes for OBS-facing browser source integrations while keeping OBS-specific behavior outside the BakingRL core app.",
+      "shortDescription": "Serve Layout Studio compositions to OBS through a local browser-source gateway.",
+      "longDescription": "OBS Gateway publishes the active Layout Studio documents through a configurable local HTTP gateway. It exposes stable browser-source URLs, health and snapshot APIs, Server-Sent Events and WebSocket routes while keeping OBS networking outside the BakingRL host.",
       "tags": [
         "obs",
         "gateway",
@@ -121,6 +121,116 @@
         }
       ],
       "reviewedAt": "2026-06-17T15:50:46Z"
+    },
+    {
+      "version": "2.0.0",
+      "status": "active",
+      "channel": "stable",
+      "runtimeApi": "2.3.0",
+      "minBakingrlVersion": "0.9.0",
+      "runtime": {
+        "node": true,
+        "sidecars": [
+          {
+            "id": "gateway",
+            "platforms": [
+              "darwin-arm64",
+              "darwin-x64",
+              "linux-x64",
+              "windows-x64"
+            ]
+          }
+        ],
+        "webviews": [
+          {
+            "id": "obsGatewayConfig",
+            "kind": "settings"
+          }
+        ]
+      },
+      "dependencies": [
+        {
+          "packageId": "bakingrl.layout-studio",
+          "version": "^1.0.0",
+          "optional": false
+        }
+      ],
+      "permissions": {
+        "bus": {
+          "read": [
+            "plugin.bakingrl.layout-studio.changed"
+          ],
+          "publish": []
+        },
+        "registry": {
+          "read": [],
+          "write": []
+        },
+        "network": {
+          "http": [],
+          "websocket": [],
+          "listen": [
+            {
+              "transport": "tcp",
+              "host": "127.0.0.1",
+              "ports": "*"
+            }
+          ]
+        },
+        "storage": {
+          "read": [],
+          "write": []
+        }
+      },
+      "nativeCapabilities": {
+        "node": {
+          "platforms": [
+            "darwin-arm64",
+            "darwin-x64",
+            "linux-x64",
+            "windows-x64"
+          ]
+        },
+        "sidecars": [
+          {
+            "id": "gateway",
+            "platforms": [
+              "darwin-arm64",
+              "darwin-x64",
+              "linux-x64",
+              "windows-x64"
+            ]
+          }
+        ],
+        "surfaces": []
+      },
+      "artifacts": [
+        {
+          "platform": "darwin-arm64",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v2.0.0/bakingrl.obs-gateway-2.0.0-darwin-arm64.brlp",
+          "bundleSha256": "946856f9724910f0f3e4a2f410363b1b8c918e2ebd729fb690121718e8345f74",
+          "signingKeyId": "quillianne-release-1"
+        },
+        {
+          "platform": "darwin-x64",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v2.0.0/bakingrl.obs-gateway-2.0.0-darwin-x64.brlp",
+          "bundleSha256": "043b705c8a8bed48c68fe80a1ee5b3af9f878d5cc99e8d56f81e8c132b95532a",
+          "signingKeyId": "quillianne-release-1"
+        },
+        {
+          "platform": "linux-x64",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v2.0.0/bakingrl.obs-gateway-2.0.0-linux-x64.brlp",
+          "bundleSha256": "1ec01012dc63b4e846532d8b230d6d19ab94a40d24696cc81a18ed8b8f41d059",
+          "signingKeyId": "quillianne-release-1"
+        },
+        {
+          "platform": "windows-x64",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v2.0.0/bakingrl.obs-gateway-2.0.0-windows-x64.brlp",
+          "bundleSha256": "6e5733a4604d6a2b782095196720eb7bd5d7c3832b1c50f7bd5869c3af370ddc",
+          "signingKeyId": "quillianne-release-1"
+        }
+      ],
+      "reviewedAt": "2026-07-16T17:24:41Z"
     }
   ]
 }

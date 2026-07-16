@@ -58,13 +58,24 @@ after(() => {
 
 test("validates and builds a strict Marketplace 2 snapshot", () => {
   const source = validateMarketplaceSources({ rootDir: marketplaceRoot });
-  assert.equal(source.packages.length, 4);
+  assert.equal(source.packages.length, 7);
 
   const { catalogue } = buildFixture(23001);
   assert.equal(catalogue.schema, "bakingrl.marketplace/2");
   assert.equal(catalogue.sequence, 23001);
-  assert.deepEqual(catalogue.sections.firstRun, []);
-  assert.ok(catalogue.packages.every((pkg) => pkg.versions.every((version) => version.status === "yanked")));
+  assert.deepEqual(catalogue.sections.firstRun, [
+    "bakingrl.stats-extended",
+    "bakingrl.layout-studio",
+    "bakingrl.broadcast-visuals",
+    "bakingrl.obs-gateway"
+  ]);
+  const versions = catalogue.packages.flatMap((pkg) => pkg.versions);
+  const activeVersions = versions.filter((version) => version.status === "active");
+  const legacyVersions = versions.filter((version) => version.runtimeApi === "2.0.0");
+  assert.equal(activeVersions.length, 6);
+  assert.ok(activeVersions.every((version) => version.runtimeApi === "2.3.0"));
+  assert.equal(legacyVersions.length, 4);
+  assert.ok(legacyVersions.every((version) => version.status === "yanked"));
   assert.ok(catalogue.packages.every((pkg) => (
     pkg.versions.every((version) => !Object.hasOwn(version, "dataMigrations"))
   )));
@@ -92,7 +103,9 @@ test("rejects unknown fields, legacy storage paths, and active pre-2.3 runtimes"
   );
 
   const activeLegacyRuntime = clone(catalogue);
-  activeLegacyRuntime.packages[0].versions[0].status = "active";
+  const legacyPackage = activeLegacyRuntime.packages.find((pkg) => pkg.id === "com.bakingrl.cast-package");
+  legacyPackage.status = "active";
+  legacyPackage.versions[0].status = "active";
   assert.throws(
     () => validateCatalogue(activeLegacyRuntime),
     (error) => error instanceof MarketplaceError && /Runtime API 2\.3\.x/.test(error.message)

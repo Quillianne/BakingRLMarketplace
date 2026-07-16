@@ -39,9 +39,11 @@ Packages, versions, and signing keys use `active`, `yanked`, or `revoked`.
 Revoked records require a reason and timestamp. A package version references its
 developer key by `signingKeyId`; public keys are not duplicated in artifacts.
 
-The current 1.0.5 bundles target Runtime API 2.0 and are therefore yanked. The
-`firstRun` section remains empty until actual 2.3 bundles are reviewed. No new
-bundle URL or hash has been invented during the Marketplace 2 migration.
+The historical 1.0.5 bundles target Runtime API 2.0 and remain yanked. The
+reviewed `plugins-v2.0.0` release introduces the Runtime API 2.3 product stack:
+Extended Statistics, Layout Studio, Broadcast Visuals, OBS Gateway, Deja Vu,
+and PlayerStreak. The first-run selection offers the four core broadcast
+packages; dependency resolution remains transactional in the BakingRL host.
 
 ## Version Records
 
@@ -51,7 +53,7 @@ bundle URL or hash has been invented during the Marketplace 2 migration.
   "status": "active",
   "channel": "stable",
   "runtimeApi": "2.3.0",
-  "minBakingrlVersion": "0.10.0",
+  "minBakingrlVersion": "0.9.0",
   "runtime": {
     "node": true,
     "sidecars": [],

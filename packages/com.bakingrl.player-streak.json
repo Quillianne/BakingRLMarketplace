@@ -5,14 +5,14 @@
   "status": "active",
   "repo": "https://github.com/Quillianne/BakingRLPlugins",
   "listing": {
-    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.5/player-streak/marketplace/listing.json",
-    "snapshotSha256": "8e2ce738d0b3f77cb1ad1522ddba5b4b24700504c8a42cb52786266903899887",
+    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v2.0.0/player-streak/marketplace/listing.json",
+    "snapshotSha256": "e6226496e04c9493661d97f6eefb5e38f6f8d0c492d21ed9747b4e827ed1c57c",
     "snapshot": {
       "schema": "bakingrl.marketplace-listing/2",
       "packageId": "com.bakingrl.player-streak",
       "displayName": "PlayerStreak",
       "shortDescription": "Show a player's wins, losses, and streak on stream.",
-      "longDescription": "PlayerStreak keeps session and global win/loss history for Rocket League players and renders a compact overlay widget with either all modes grouped together or streaks separated automatically by the current Cast Package game mode. It reads Cast Package sequence and player-stats state for mode and player data, and offers package-level defaults plus distinct clean, broadcast, neon, ribbon, and terminal themes for player overlays.",
+      "longDescription": "PlayerStreak keeps session and global win/loss history for Rocket League players and contributes a compact visual to Layout Studio. It reads Extended Statistics for game mode and player identity, with package-level defaults and clean, broadcast, neon, ribbon and terminal themes.",
       "tags": [
         "stats",
         "overlay",
@@ -106,6 +106,87 @@
         }
       ],
       "reviewedAt": "2026-06-17T15:50:46Z"
+    },
+    {
+      "version": "2.0.0",
+      "status": "active",
+      "channel": "stable",
+      "runtimeApi": "2.3.0",
+      "minBakingrlVersion": "0.9.0",
+      "runtime": {
+        "node": true,
+        "sidecars": [],
+        "webviews": []
+      },
+      "dependencies": [
+        {
+          "packageId": "bakingrl.stats-extended",
+          "version": "^1.0.0",
+          "optional": false
+        },
+        {
+          "packageId": "bakingrl.layout-studio",
+          "version": "^1.0.0",
+          "optional": false
+        }
+      ],
+      "permissions": {
+        "bus": {
+          "read": [
+            "MatchCreated",
+            "MatchInitialized",
+            "MatchEnded",
+            "MatchDestroyed",
+            "plugin.bakingrl.stats-extended.sequence",
+            "plugin.bakingrl.stats-extended.player-stats",
+            "plugin.com.bakingrl.player-streak.state"
+          ],
+          "publish": [
+            "plugin.com.bakingrl.player-streak.state"
+          ]
+        },
+        "registry": {
+          "read": [
+            "plugin.bakingrl.stats-extended.sequence",
+            "plugin.bakingrl.stats-extended.player-stats",
+            "plugin.com.bakingrl.player-streak.state"
+          ],
+          "write": [
+            "plugin.com.bakingrl.player-streak.state"
+          ]
+        },
+        "network": {
+          "http": [],
+          "websocket": [],
+          "listen": []
+        },
+        "storage": {
+          "read": [
+            "player-streak-state.json"
+          ],
+          "write": [
+            "player-streak-state.json"
+          ]
+        }
+      },
+      "nativeCapabilities": {
+        "node": {
+          "platforms": [
+            "any"
+          ]
+        },
+        "sidecars": [],
+        "surfaces": []
+      },
+      "artifacts": [
+        {
+          "platform": "any",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v2.0.0/com.bakingrl.player-streak-2.0.0.brlp",
+          "bundleSha256": "35b80a1b71744d9df6b99131c44a0ce69815066f807a4ff119c471f24d405411",
+          "signingKeyId": "quillianne-release-1"
+        }
+      ],
+      "reviewedAt": "2026-07-16T17:24:41Z"
     }
   ]
 }
