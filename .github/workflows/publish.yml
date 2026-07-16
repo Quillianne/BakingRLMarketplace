@@ -76,6 +76,27 @@ jobs:
 
       - run: npm run verify -- --key "$BAKINGRL_MARKETPLACE_SIGNING_KEY"
 
+      - name: Publish verification key
+        run: |
+          node --input-type=module -e '
+            import { readFileSync, writeFileSync } from "node:fs";
+
+            const source = JSON.parse(
+              readFileSync(process.env.BAKINGRL_MARKETPLACE_SIGNING_KEY, "utf8"),
+            );
+            const key = {
+              schema: "bakingrl.marketplace-verification-key/1",
+              keyId: source.keyId,
+              algorithm: source.algorithm,
+              publicKey: source.publicKey,
+            };
+
+            writeFileSync(
+              "public/marketplace-root.json",
+              `${JSON.stringify(key, null, 2)}\n`,
+            );
+          '
+
       - name: Remove signing key
         if: always()
         run: |
