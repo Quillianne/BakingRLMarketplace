@@ -47,9 +47,28 @@ jobs:
             echo "Missing BAKINGRL_MARKETPLACE_SIGNING_KEY_JSON" >&2
             exit 1
           fi
-          key_path="$RUNNER_TEMP/bakingrl-marketplace-signing-key.json"
-          printf '%s' "$BAKINGRL_MARKETPLACE_SIGNING_KEY_JSON" > "$key_path"
-          echo "BAKINGRL_MARKETPLACE_SIGNING_KEY=$key_path" >> "$GITHUB_ENV"
+          export BAKINGRL_MARKETPLACE_SIGNING_KEY="$RUNNER_TEMP/bakingrl-marketplace-signing-key.json"
+          node --input-type=module -e '
+            import { writeFileSync } from "node:fs";
+
+            const source = JSON.parse(process.env.BAKINGRL_MARKETPLACE_SIGNING_KEY_JSON);
+            const key = source.schema
+              ? source
+              : {
+                  schema: "bakingrl.marketplace-signing-key/1",
+                  keyId: "marketplace-root-1",
+                  algorithm: source.algorithm,
+                  publicKey: source.publicKey,
+                  privateKeyPem: source.privateKeyPem,
+                };
+
+            writeFileSync(
+              process.env.BAKINGRL_MARKETPLACE_SIGNING_KEY,
+              JSON.stringify(key),
+              { mode: 0o600 },
+            );
+          '
+          echo "BAKINGRL_MARKETPLACE_SIGNING_KEY=$BAKINGRL_MARKETPLACE_SIGNING_KEY" >> "$GITHUB_ENV"
         env:
           BAKINGRL_MARKETPLACE_SIGNING_KEY_JSON: ${{ secrets.BAKINGRL_MARKETPLACE_SIGNING_KEY_JSON }}
 
