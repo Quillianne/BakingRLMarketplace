@@ -53,7 +53,7 @@ packages; dependency resolution remains transactional in the BakingRL host.
   "status": "active",
   "channel": "stable",
   "runtimeApi": "2.3.0",
-  "minBakingrlVersion": "0.10.0",
+  "minBakingrlVersion": "0.10.1",
   "runtime": {
     "node": true,
     "sidecars": [],
