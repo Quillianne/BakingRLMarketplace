@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bakingrl.dev/schemas/marketplace/signature.schema.json",
+  "title": "BakingRL Marketplace Signature",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "algorithm", "keyId", "signedFile", "sha256", "signature"],
+  "properties": {
+    "schema": { "const": "bakingrl.marketplace-signature/2" },
+    "algorithm": { "const": "ed25519" },
+    "keyId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+    },
+    "signedFile": { "const": "marketplace.json" },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "signature": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9+/]{86}==$"
+    }
+  }
+}

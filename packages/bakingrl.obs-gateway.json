@@ -1,44 +1,126 @@
 {
-  "schema": "bakingrl.marketplace-package/1",
+  "schema": "bakingrl.marketplace-package/2",
   "id": "bakingrl.obs-gateway",
   "developerId": "quillianne",
+  "status": "active",
   "repo": "https://github.com/Quillianne/BakingRLPlugins",
-  "listingUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.5/obs-gateway/marketplace/listing.json",
-  "approvedVersions": [
+  "listing": {
+    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.5/obs-gateway/marketplace/listing.json",
+    "snapshotSha256": "739292c4ee573bf70fbd3f03a234bbc4f7e9c72104c2aad2df3b6bb25d886545",
+    "snapshot": {
+      "schema": "bakingrl.marketplace-listing/2",
+      "packageId": "bakingrl.obs-gateway",
+      "displayName": "OBS Gateway",
+      "shortDescription": "Serve BakingRL overlay streams through a first-party OBS gateway plugin.",
+      "longDescription": "OBS Gateway runs a trusted first-party V4 service that starts a local HTTP gateway from plugin settings. It exposes health, snapshot, Server-Sent Events, and WebSocket routes for OBS-facing browser source integrations while keeping OBS-specific behavior outside the BakingRL core app.",
+      "tags": [
+        "obs",
+        "gateway",
+        "streaming",
+        "integration"
+      ],
+      "repo": "https://github.com/Quillianne/BakingRLPlugins",
+      "media": {
+        "icon": null,
+        "banner": null,
+        "screenshots": []
+      },
+      "links": {
+        "docs": "https://github.com/Quillianne/BakingRLPlugins/tree/main/obs-gateway#readme",
+        "support": "https://github.com/Quillianne/BakingRLPlugins/issues"
+      }
+    }
+  },
+  "versions": [
     {
       "version": "1.0.5",
-      "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.5/bakingrl.obs-gateway-1.0.5.brlp",
-      "bundleSha256": "1f05ca7e56eabd184bfed892ca42ce472ce6f3cc5abd114d0af54e5474bb3ea4",
-      "signaturePublicKey": "3ZK2t4SPZKufX40dwRPSDP+y2B2+L2Pq3PQ+4HJJ+3w=",
+      "status": "yanked",
+      "channel": "stable",
       "runtimeApi": "2.0.0",
-      "review": {
-        "status": "approved",
-        "reviewedAt": "2026-06-17T15:50:46Z",
-        "permissions": {
-          "bus": {
-            "read": [],
-            "publish": []
-          },
-          "registry": {
-            "read": [],
-            "write": []
-          },
-          "network": {
-            "http": [
-              "http://127.0.0.1:*",
-              "http://localhost:*"
-            ],
-            "websocket": [
-              "ws://127.0.0.1:*",
-              "ws://localhost:*"
+      "runtime": {
+        "node": true,
+        "sidecars": [
+          {
+            "id": "gateway",
+            "platforms": [
+              "darwin-arm64"
             ]
-          },
-          "storage": {
-            "read": [],
-            "write": []
           }
+        ],
+        "webviews": [
+          {
+            "id": "obsGatewayConfig",
+            "kind": "settings"
+          }
+        ]
+      },
+      "dependencies": [],
+      "permissions": {
+        "bus": {
+          "read": [],
+          "publish": []
+        },
+        "registry": {
+          "read": [],
+          "write": []
+        },
+        "network": {
+          "http": [
+            {
+              "scheme": "http",
+              "host": "127.0.0.1",
+              "ports": "*"
+            },
+            {
+              "scheme": "http",
+              "host": "localhost",
+              "ports": "*"
+            }
+          ],
+          "websocket": [
+            {
+              "scheme": "ws",
+              "host": "127.0.0.1",
+              "ports": "*"
+            },
+            {
+              "scheme": "ws",
+              "host": "localhost",
+              "ports": "*"
+            }
+          ],
+          "listen": []
+        },
+        "storage": {
+          "read": [],
+          "write": []
         }
-      }
+      },
+      "nativeCapabilities": {
+        "node": {
+          "platforms": [
+            "darwin-arm64"
+          ]
+        },
+        "sidecars": [
+          {
+            "id": "gateway",
+            "platforms": [
+              "darwin-arm64"
+            ]
+          }
+        ],
+        "surfaces": []
+      },
+      "artifacts": [
+        {
+          "platform": "darwin-arm64",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.5/bakingrl.obs-gateway-1.0.5.brlp",
+          "bundleSha256": "1f05ca7e56eabd184bfed892ca42ce472ce6f3cc5abd114d0af54e5474bb3ea4",
+          "signingKeyId": "quillianne-release-1"
+        }
+      ],
+      "reviewedAt": "2026-06-17T15:50:46Z"
     }
   ]
 }

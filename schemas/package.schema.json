@@ -1,37 +1,462 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bakingrl.dev/schemas/marketplace/package.schema.json",
   "title": "BakingRL Marketplace Package",
   "type": "object",
-  "required": ["schema", "id", "developerId", "repo", "listingUrl", "approvedVersions"],
+  "additionalProperties": false,
+  "required": ["schema", "id", "developerId", "status", "repo", "listing", "versions"],
   "properties": {
-    "schema": { "const": "bakingrl.marketplace-package/1" },
-    "id": { "type": "string" },
-    "developerId": { "type": "string" },
-    "repo": { "type": "string" },
-    "listingUrl": { "type": "string" },
-    "approvedVersions": {
+    "schema": { "const": "bakingrl.marketplace-package/2" },
+    "id": { "$ref": "#/$defs/packageId" },
+    "developerId": { "$ref": "#/$defs/id" },
+    "status": { "$ref": "#/$defs/status" },
+    "revocation": { "$ref": "#/$defs/revocation" },
+    "repo": { "$ref": "#/$defs/httpsUrl" },
+    "listing": { "$ref": "#/$defs/listing" },
+    "versions": {
       "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["version", "bundleUrl", "bundleSha256", "signaturePublicKey", "review"],
-        "properties": {
-          "version": { "type": "string" },
-          "bundleUrl": { "type": "string" },
-          "bundleSha256": { "type": "string" },
-          "signaturePublicKey": { "type": "string" },
-          "runtimeApi": { "type": ["string", "null"] },
-          "revoked": { "type": "boolean" },
-          "review": {
-            "type": "object",
-            "required": ["status", "reviewedAt", "permissions"],
-            "properties": {
-              "status": { "enum": ["approved", "rejected"] },
-              "reviewedAt": { "type": "string" },
-              "permissions": { "type": "object" }
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/version" }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "revoked" } }, "required": ["status"] },
+      "then": { "required": ["revocation"] },
+      "else": { "not": { "required": ["revocation"] } }
+    }
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+    },
+    "runtimeId": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._-]*$"
+    },
+    "packageId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)+$"
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "httpsUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "status": {
+      "enum": ["active", "yanked", "revoked"]
+    },
+    "revocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reason", "revokedAt"],
+      "properties": {
+        "reason": { "type": "string", "minLength": 1 },
+        "revokedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "media": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "sha256"],
+      "properties": {
+        "url": { "$ref": "#/$defs/httpsUrl" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "screenshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "sha256"],
+      "properties": {
+        "url": { "$ref": "#/$defs/httpsUrl" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "caption": { "type": "string", "minLength": 1 }
+      }
+    },
+    "listingSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "packageId",
+        "displayName",
+        "shortDescription",
+        "longDescription",
+        "tags",
+        "repo",
+        "media",
+        "links"
+      ],
+      "properties": {
+        "schema": { "const": "bakingrl.marketplace-listing/2" },
+        "packageId": { "$ref": "#/$defs/packageId" },
+        "displayName": { "type": "string", "minLength": 1 },
+        "shortDescription": { "type": "string", "minLength": 1 },
+        "longDescription": { "type": "string", "minLength": 1 },
+        "tags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "repo": { "$ref": "#/$defs/httpsUrl" },
+        "media": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["icon", "banner", "screenshots"],
+          "properties": {
+            "icon": {
+              "oneOf": [
+                { "type": "null" },
+                { "$ref": "#/$defs/media" }
+              ]
+            },
+            "banner": {
+              "oneOf": [
+                { "type": "null" },
+                { "$ref": "#/$defs/media" }
+              ]
+            },
+            "screenshots": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/screenshot" }
             }
+          }
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["docs", "support"],
+          "properties": {
+            "docs": { "$ref": "#/$defs/httpsUrl" },
+            "support": { "$ref": "#/$defs/httpsUrl" }
           }
         }
       }
+    },
+    "listing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceUrl", "snapshotSha256", "snapshot"],
+      "properties": {
+        "sourceUrl": { "$ref": "#/$defs/httpsUrl" },
+        "snapshotSha256": { "$ref": "#/$defs/sha256" },
+        "snapshot": { "$ref": "#/$defs/listingSnapshot" }
+      }
+    },
+    "platform": {
+      "enum": ["any", "darwin-arm64", "darwin-x64", "linux-arm64", "linux-x64", "windows-x64"]
+    },
+    "platforms": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/platform" }
+    },
+    "sidecarRuntime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "platforms"],
+      "properties": {
+        "id": { "$ref": "#/$defs/runtimeId" },
+        "platforms": { "$ref": "#/$defs/platforms" }
+      }
+    },
+    "webviewRuntime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind"],
+      "properties": {
+        "id": { "$ref": "#/$defs/runtimeId" },
+        "kind": { "enum": ["tool", "settings", "panel", "surface"] }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node", "sidecars", "webviews"],
+      "properties": {
+        "node": { "type": "boolean" },
+        "sidecars": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/sidecarRuntime" }
+        },
+        "webviews": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/webviewRuntime" }
+        }
+      }
+    },
+    "nativeNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["platforms"],
+      "properties": {
+        "platforms": { "$ref": "#/$defs/platforms" }
+      }
+    },
+    "nativeSidecar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "platforms"],
+      "properties": {
+        "id": { "$ref": "#/$defs/runtimeId" },
+        "platforms": { "$ref": "#/$defs/platforms" }
+      }
+    },
+    "nativeSurface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "platforms"],
+      "properties": {
+        "id": { "$ref": "#/$defs/runtimeId" },
+        "platforms": { "$ref": "#/$defs/platforms" }
+      }
+    },
+    "nativeCapabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node", "sidecars", "surfaces"],
+      "properties": {
+        "node": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/nativeNode" }
+          ]
+        },
+        "sidecars": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/nativeSidecar" }
+        },
+        "surfaces": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/nativeSurface" }
+        }
+      }
+    },
+    "patternPermission": {
+      "type": "string",
+      "pattern": "^(?:\\*|[^*\\\\]+\\*?)$"
+    },
+    "patternPermissions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/patternPermission" }
+    },
+    "storagePermission": {
+      "type": "string",
+      "pattern": "^(?:\\*|(?!/)(?!.*://)(?!.*\\\\)[^*]+\\*?)$"
+    },
+    "storagePermissions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/storagePermission" }
+    },
+    "readWritePermissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["read", "write"],
+      "properties": {
+        "read": { "$ref": "#/$defs/patternPermissions" },
+        "write": { "$ref": "#/$defs/patternPermissions" }
+      }
+    },
+    "busPermissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["read", "publish"],
+      "properties": {
+        "read": { "$ref": "#/$defs/patternPermissions" },
+        "publish": { "$ref": "#/$defs/patternPermissions" }
+      }
+    },
+    "storageReadWritePermissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["read", "write"],
+      "properties": {
+        "read": { "$ref": "#/$defs/storagePermissions" },
+        "write": { "$ref": "#/$defs/storagePermissions" }
+      }
+    },
+    "ports": {
+      "oneOf": [
+        { "const": "*" },
+        {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 65535
+          }
+        }
+      ]
+    },
+    "httpEndpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scheme", "host", "ports"],
+      "properties": {
+        "scheme": { "enum": ["http", "https"] },
+        "host": {
+          "type": "string",
+          "pattern": "^[a-z0-9._:-]+$"
+        },
+        "ports": { "$ref": "#/$defs/ports" },
+        "pathPrefixes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^/" }
+        }
+      }
+    },
+    "websocketEndpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scheme", "host", "ports"],
+      "properties": {
+        "scheme": { "enum": ["ws", "wss"] },
+        "host": {
+          "type": "string",
+          "pattern": "^[a-z0-9._:-]+$"
+        },
+        "ports": { "$ref": "#/$defs/ports" },
+        "pathPrefixes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^/" }
+        }
+      }
+    },
+    "listenEndpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["transport", "host", "ports"],
+      "properties": {
+        "transport": { "enum": ["http", "https", "ws", "wss", "tcp"] },
+        "host": {
+          "type": "string",
+          "pattern": "^[a-z0-9._:-]+$"
+        },
+        "ports": { "$ref": "#/$defs/ports" }
+      }
+    },
+    "networkPermissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["http", "websocket", "listen"],
+      "properties": {
+        "http": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/httpEndpoint" }
+        },
+        "websocket": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/websocketEndpoint" }
+        },
+        "listen": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/listenEndpoint" }
+        }
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bus", "registry", "network", "storage"],
+      "properties": {
+        "bus": { "$ref": "#/$defs/busPermissions" },
+        "registry": { "$ref": "#/$defs/readWritePermissions" },
+        "network": { "$ref": "#/$defs/networkPermissions" },
+        "storage": { "$ref": "#/$defs/storageReadWritePermissions" }
+      }
+    },
+    "dependency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["packageId", "version", "optional"],
+      "properties": {
+        "packageId": { "$ref": "#/$defs/packageId" },
+        "version": { "type": "string", "minLength": 1 },
+        "optional": { "type": "boolean" }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["platform", "bundleUrl", "bundleSha256", "signingKeyId"],
+      "properties": {
+        "platform": { "$ref": "#/$defs/platform" },
+        "bundleUrl": { "$ref": "#/$defs/httpsUrl" },
+        "bundleSha256": { "$ref": "#/$defs/sha256" },
+        "signingKeyId": { "$ref": "#/$defs/id" }
+      }
+    },
+    "version": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "status",
+        "channel",
+        "runtimeApi",
+        "runtime",
+        "dependencies",
+        "permissions",
+        "nativeCapabilities",
+        "artifacts",
+        "reviewedAt"
+      ],
+      "properties": {
+        "version": { "$ref": "#/$defs/semver" },
+        "status": { "$ref": "#/$defs/status" },
+        "revocation": { "$ref": "#/$defs/revocation" },
+        "channel": { "enum": ["stable", "beta", "nightly"] },
+        "runtimeApi": { "$ref": "#/$defs/semver" },
+        "minBakingrlVersion": { "$ref": "#/$defs/semver" },
+        "runtime": { "$ref": "#/$defs/runtime" },
+        "dependencies": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/dependency" }
+        },
+        "permissions": { "$ref": "#/$defs/permissions" },
+        "nativeCapabilities": { "$ref": "#/$defs/nativeCapabilities" },
+        "artifacts": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/artifact" }
+        },
+        "reviewedAt": { "type": "string", "format": "date-time" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "revoked" } }, "required": ["status"] },
+          "then": { "required": ["revocation"] },
+          "else": { "not": { "required": ["revocation"] } }
+        },
+        {
+          "if": { "properties": { "status": { "const": "active" } }, "required": ["status"] },
+          "then": {
+            "properties": {
+              "runtimeApi": { "type": "string", "pattern": "^2\\.3\\." }
+            }
+          }
+        }
+      ]
     }
   }
 }

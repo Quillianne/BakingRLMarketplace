@@ -1,12 +1,18 @@
 {
-  "schema": "bakingrl.marketplace-developers/1",
+  "schema": "bakingrl.marketplace-developers/2",
   "developers": [
     {
       "id": "quillianne",
       "name": "Quillianne",
-      "verified": true,
-      "packageSigningKeys": [
-        "3ZK2t4SPZKufX40dwRPSDP+y2B2+L2Pq3PQ+4HJJ+3w="
+      "kind": "individual",
+      "verification": "verified",
+      "signingKeys": [
+        {
+          "id": "quillianne-release-1",
+          "algorithm": "ed25519",
+          "publicKey": "3ZK2t4SPZKufX40dwRPSDP+y2B2+L2Pq3PQ+4HJJ+3w=",
+          "status": "active"
+        }
       ]
     }
   ]

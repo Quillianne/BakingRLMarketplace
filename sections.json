@@ -1,5 +1,5 @@
 {
-  "schema": "bakingrl.marketplace-sections/1",
+  "schema": "bakingrl.marketplace-sections/2",
   "sections": {
     "recommended": [
       "com.bakingrl.cast-package",
@@ -10,6 +10,7 @@
       "com.bakingrl.deja-vu",
       "com.bakingrl.player-streak",
       "bakingrl.obs-gateway"
-    ]
+    ],
+    "firstRun": []
   }
 }

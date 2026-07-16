@@ -32,7 +32,14 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run build
+      - run: npm run validate
+
+      - run: npm test
+
+      - name: Build monotone catalogue snapshot
+        run: |
+          sequence=$((GITHUB_RUN_ID * 100 + GITHUB_RUN_ATTEMPT))
+          npm run build -- --sequence "$sequence"
 
       - name: Write signing key
         run: |
@@ -47,6 +54,8 @@ jobs:
           BAKINGRL_MARKETPLACE_SIGNING_KEY_JSON: ${{ secrets.BAKINGRL_MARKETPLACE_SIGNING_KEY_JSON }}
 
       - run: npm run sign -- --key "$BAKINGRL_MARKETPLACE_SIGNING_KEY"
+
+      - run: npm run verify -- --key "$BAKINGRL_MARKETPLACE_SIGNING_KEY"
 
       - name: Remove signing key
         if: always()

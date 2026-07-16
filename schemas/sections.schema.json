@@ -1,22 +1,32 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bakingrl.dev/schemas/marketplace/sections.schema.json",
   "title": "BakingRL Marketplace Sections",
   "type": "object",
+  "additionalProperties": false,
   "required": ["schema", "sections"],
   "properties": {
-    "schema": { "const": "bakingrl.marketplace-sections/1" },
+    "schema": { "const": "bakingrl.marketplace-sections/2" },
+    "sections": { "$ref": "#/$defs/sections" }
+  },
+  "$defs": {
+    "packageId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)+$"
+    },
+    "packageIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/packageId" }
+    },
     "sections": {
       "type": "object",
-      "required": ["recommended", "new"],
+      "additionalProperties": false,
+      "required": ["recommended", "new", "firstRun"],
       "properties": {
-        "recommended": {
-          "type": "array",
-          "items": { "type": "string" }
-        },
-        "new": {
-          "type": "array",
-          "items": { "type": "string" }
-        }
+        "recommended": { "$ref": "#/$defs/packageIds" },
+        "new": { "$ref": "#/$defs/packageIds" },
+        "firstRun": { "$ref": "#/$defs/packageIds" }
       }
     }
   }

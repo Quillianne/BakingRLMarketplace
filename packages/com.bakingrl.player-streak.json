@@ -1,58 +1,111 @@
 {
-  "schema": "bakingrl.marketplace-package/1",
+  "schema": "bakingrl.marketplace-package/2",
   "id": "com.bakingrl.player-streak",
   "developerId": "quillianne",
+  "status": "active",
   "repo": "https://github.com/Quillianne/BakingRLPlugins",
-  "listingUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.5/player-streak/marketplace/listing.json",
-  "approvedVersions": [
+  "listing": {
+    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.5/player-streak/marketplace/listing.json",
+    "snapshotSha256": "8e2ce738d0b3f77cb1ad1522ddba5b4b24700504c8a42cb52786266903899887",
+    "snapshot": {
+      "schema": "bakingrl.marketplace-listing/2",
+      "packageId": "com.bakingrl.player-streak",
+      "displayName": "PlayerStreak",
+      "shortDescription": "Show a player's wins, losses, and streak on stream.",
+      "longDescription": "PlayerStreak keeps session and global win/loss history for Rocket League players and renders a compact overlay widget with either all modes grouped together or streaks separated automatically by the current Cast Package game mode. It reads Cast Package sequence and player-stats state for mode and player data, and offers package-level defaults plus distinct clean, broadcast, neon, ribbon, and terminal themes for player overlays.",
+      "tags": [
+        "stats",
+        "overlay",
+        "player",
+        "streak"
+      ],
+      "repo": "https://github.com/Quillianne/BakingRLPlugins",
+      "media": {
+        "icon": null,
+        "banner": null,
+        "screenshots": []
+      },
+      "links": {
+        "docs": "https://github.com/Quillianne/BakingRLPlugins/tree/main/player-streak#readme",
+        "support": "https://github.com/Quillianne/BakingRLPlugins/issues"
+      }
+    }
+  },
+  "versions": [
     {
       "version": "1.0.5",
-      "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.5/com.bakingrl.player-streak-1.0.5.brlp",
-      "bundleSha256": "b331d463578a5afb4d84e86503e75e22d20e00a80e8938c3ec20ed01c63e5cba",
-      "signaturePublicKey": "3ZK2t4SPZKufX40dwRPSDP+y2B2+L2Pq3PQ+4HJJ+3w=",
+      "status": "yanked",
+      "channel": "stable",
       "runtimeApi": "2.0.0",
-      "review": {
-        "status": "approved",
-        "reviewedAt": "2026-06-17T15:50:46Z",
-        "permissions": {
-          "bus": {
-            "read": [
-              "MatchCreated",
-              "MatchInitialized",
-              "MatchEnded",
-              "MatchDestroyed",
-              "plugin.com.bakingrl.cast-package.sequence",
-              "plugin.com.bakingrl.cast-package.player-stats",
-              "plugin.com.bakingrl.player-streak.state"
-            ],
-            "publish": [
-              "plugin.com.bakingrl.player-streak.*"
-            ]
-          },
-          "registry": {
-            "read": [
-              "plugin.com.bakingrl.cast-package.sequence",
-              "plugin.com.bakingrl.cast-package.player-stats",
-              "plugin.com.bakingrl.player-streak.*"
-            ],
-            "write": [
-              "plugin.com.bakingrl.player-streak.*"
-            ]
-          },
-          "network": {
-            "http": [],
-            "websocket": []
-          },
-          "storage": {
-            "read": [
-              "plugin://self/*"
-            ],
-            "write": [
-              "plugin://self/*"
-            ]
-          }
+      "runtime": {
+        "node": true,
+        "sidecars": [],
+        "webviews": []
+      },
+      "dependencies": [
+        {
+          "packageId": "com.bakingrl.cast-package",
+          "version": "^1.0.0",
+          "optional": true
         }
-      }
+      ],
+      "permissions": {
+        "bus": {
+          "read": [
+            "MatchCreated",
+            "MatchInitialized",
+            "MatchEnded",
+            "MatchDestroyed",
+            "plugin.com.bakingrl.cast-package.sequence",
+            "plugin.com.bakingrl.cast-package.player-stats",
+            "plugin.com.bakingrl.player-streak.state"
+          ],
+          "publish": [
+            "plugin.com.bakingrl.player-streak.*"
+          ]
+        },
+        "registry": {
+          "read": [
+            "plugin.com.bakingrl.cast-package.sequence",
+            "plugin.com.bakingrl.cast-package.player-stats",
+            "plugin.com.bakingrl.player-streak.*"
+          ],
+          "write": [
+            "plugin.com.bakingrl.player-streak.*"
+          ]
+        },
+        "network": {
+          "http": [],
+          "websocket": [],
+          "listen": []
+        },
+        "storage": {
+          "read": [
+            "*"
+          ],
+          "write": [
+            "*"
+          ]
+        }
+      },
+      "nativeCapabilities": {
+        "node": {
+          "platforms": [
+            "any"
+          ]
+        },
+        "sidecars": [],
+        "surfaces": []
+      },
+      "artifacts": [
+        {
+          "platform": "any",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.5/com.bakingrl.player-streak-1.0.5.brlp",
+          "bundleSha256": "b331d463578a5afb4d84e86503e75e22d20e00a80e8938c3ec20ed01c63e5cba",
+          "signingKeyId": "quillianne-release-1"
+        }
+      ],
+      "reviewedAt": "2026-06-17T15:50:46Z"
     }
   ]
 }

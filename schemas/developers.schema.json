@@ -1,23 +1,66 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bakingrl.dev/schemas/marketplace/developers.schema.json",
   "title": "BakingRL Marketplace Developers",
   "type": "object",
+  "additionalProperties": false,
   "required": ["schema", "developers"],
   "properties": {
-    "schema": { "const": "bakingrl.marketplace-developers/1" },
+    "schema": { "const": "bakingrl.marketplace-developers/2" },
     "developers": {
       "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["id", "name", "verified", "packageSigningKeys"],
-        "properties": {
-          "id": { "type": "string" },
-          "name": { "type": "string" },
-          "verified": { "type": "boolean" },
-          "packageSigningKeys": {
-            "type": "array",
-            "items": { "type": "string" }
-          }
+      "items": { "$ref": "#/$defs/developer" }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+    },
+    "revocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reason", "revokedAt"],
+      "properties": {
+        "reason": { "type": "string", "minLength": 1 },
+        "revokedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "signingKey": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "algorithm", "publicKey", "status"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "algorithm": { "const": "ed25519" },
+        "publicKey": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9+/]{43}=$"
+        },
+        "status": { "enum": ["active", "yanked", "revoked"] },
+        "revocation": { "$ref": "#/$defs/revocation" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "revoked" } }, "required": ["status"] },
+          "then": { "required": ["revocation"] },
+          "else": { "not": { "required": ["revocation"] } }
+        }
+      ]
+    },
+    "developer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "kind", "verification", "signingKeys"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "name": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["individual", "organization"] },
+        "verification": { "enum": ["unverified", "verified", "official"] },
+        "signingKeys": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/signingKey" }
         }
       }
     }

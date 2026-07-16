@@ -1,76 +1,123 @@
 {
-  "schema": "bakingrl.marketplace-package/1",
+  "schema": "bakingrl.marketplace-package/2",
   "id": "com.bakingrl.cast-package",
   "developerId": "quillianne",
+  "status": "active",
   "repo": "https://github.com/Quillianne/BakingRLPlugins",
-  "listingUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.5/cast-package/marketplace/listing.json",
-  "approvedVersions": [
+  "listing": {
+    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v1.0.5/cast-package/marketplace/listing.json",
+    "snapshotSha256": "8388e7cc967dd2f60021acf9dcb24c59e55499d989b56d661eb6d1cbe144ebfe",
+    "snapshot": {
+      "schema": "bakingrl.marketplace-listing/2",
+      "packageId": "com.bakingrl.cast-package",
+      "displayName": "Cast Package",
+      "shortDescription": "Production-oriented Rocket League cast overlays and BO controls.",
+      "longDescription": "Cast Package combines a live scoreboard, goal and victory animations, player boost and live stat widgets, team preview panels, cage shot maps, end-of-match statistics widgets, a unified fullscreen stats event visual for cage stats, head-to-head and team statistics, and a BO/regie control page. It is intended for stream operators who want a cohesive first-party overlay pack with host-mediated controls and service-backed series state.",
+      "tags": [
+        "overlay",
+        "broadcast",
+        "scoreboard",
+        "controls"
+      ],
+      "repo": "https://github.com/Quillianne/BakingRLPlugins",
+      "media": {
+        "icon": null,
+        "banner": null,
+        "screenshots": []
+      },
+      "links": {
+        "docs": "https://github.com/Quillianne/BakingRLPlugins/tree/main/cast-package#readme",
+        "support": "https://github.com/Quillianne/BakingRLPlugins/issues"
+      }
+    }
+  },
+  "versions": [
     {
       "version": "1.0.5",
-      "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.5/com.bakingrl.cast-package-1.0.5.brlp",
-      "bundleSha256": "d4891b7bdf1bab53ca040bb964573d678827381d73517b3815454d9674f7ec6b",
-      "signaturePublicKey": "3ZK2t4SPZKufX40dwRPSDP+y2B2+L2Pq3PQ+4HJJ+3w=",
+      "status": "yanked",
+      "channel": "stable",
       "runtimeApi": "2.0.0",
-      "review": {
-        "status": "approved",
-        "reviewedAt": "2026-06-17T15:50:46Z",
-        "permissions": {
-          "bus": {
-            "read": [
-              "UpdateState",
-              "BallHit",
-              "ClockUpdatedSeconds",
-              "CountdownBegin",
-              "CrossbarHit",
-              "GoalScored",
-              "GoalReplayEnd",
-              "GoalReplayStart",
-              "MatchCreated",
-              "MatchDestroyed",
-              "MatchInitialized",
-              "MatchEnded",
-              "MatchPaused",
-              "MatchUnpaused",
-              "PodiumStart",
-              "ReplayCreated",
-              "RoundStarted",
-              "StatfeedEvent",
-              "plugin.com.bakingrl.cast-package.cage-stats",
-              "plugin.com.bakingrl.cast-package.player-stats",
-              "plugin.com.bakingrl.cast-package.regie",
-              "plugin.com.bakingrl.cast-package.sequence",
-              "plugin.com.bakingrl.cast-package.state"
-            ],
-            "publish": [
-              "plugin.com.bakingrl.cast-package.*"
-            ]
-          },
-          "registry": {
-            "read": [
-              "plugin.com.bakingrl.cast-package.cage-stats",
-              "plugin.com.bakingrl.cast-package.player-stats",
-              "plugin.com.bakingrl.cast-package.regie",
-              "plugin.com.bakingrl.cast-package.sequence",
-              "plugin.com.bakingrl.cast-package.state"
-            ],
-            "write": [
-              "plugin.com.bakingrl.cast-package.*"
-            ]
-          },
-          "network": {
-            "http": [],
-            "websocket": []
-          },
-          "storage": {
-            "read": [
-              "plugin://self/*"
-            ],
-            "write": [
-              "plugin://self/*"
-            ]
-          }
+      "runtime": {
+        "node": true,
+        "sidecars": [],
+        "webviews": []
+      },
+      "dependencies": [],
+      "permissions": {
+        "bus": {
+          "read": [
+            "UpdateState",
+            "BallHit",
+            "ClockUpdatedSeconds",
+            "CountdownBegin",
+            "CrossbarHit",
+            "GoalScored",
+            "GoalReplayEnd",
+            "GoalReplayStart",
+            "MatchCreated",
+            "MatchDestroyed",
+            "MatchInitialized",
+            "MatchEnded",
+            "MatchPaused",
+            "MatchUnpaused",
+            "PodiumStart",
+            "ReplayCreated",
+            "RoundStarted",
+            "StatfeedEvent",
+            "plugin.com.bakingrl.cast-package.cage-stats",
+            "plugin.com.bakingrl.cast-package.player-stats",
+            "plugin.com.bakingrl.cast-package.regie",
+            "plugin.com.bakingrl.cast-package.sequence",
+            "plugin.com.bakingrl.cast-package.state"
+          ],
+          "publish": [
+            "plugin.com.bakingrl.cast-package.*"
+          ]
+        },
+        "registry": {
+          "read": [
+            "plugin.com.bakingrl.cast-package.cage-stats",
+            "plugin.com.bakingrl.cast-package.player-stats",
+            "plugin.com.bakingrl.cast-package.regie",
+            "plugin.com.bakingrl.cast-package.sequence",
+            "plugin.com.bakingrl.cast-package.state"
+          ],
+          "write": [
+            "plugin.com.bakingrl.cast-package.*"
+          ]
+        },
+        "network": {
+          "http": [],
+          "websocket": [],
+          "listen": []
+        },
+        "storage": {
+          "read": [
+            "*"
+          ],
+          "write": [
+            "*"
+          ]
         }
-      }
+      },
+      "nativeCapabilities": {
+        "node": {
+          "platforms": [
+            "any"
+          ]
+        },
+        "sidecars": [],
+        "surfaces": []
+      },
+      "artifacts": [
+        {
+          "platform": "any",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v1.0.5/com.bakingrl.cast-package-1.0.5.brlp",
+          "bundleSha256": "d4891b7bdf1bab53ca040bb964573d678827381d73517b3815454d9674f7ec6b",
+          "signingKeyId": "quillianne-release-1"
+        }
+      ],
+      "reviewedAt": "2026-06-17T15:50:46Z"
     }
   ]
 }

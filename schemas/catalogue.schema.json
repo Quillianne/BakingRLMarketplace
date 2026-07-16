@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bakingrl.dev/schemas/marketplace/catalogue.schema.json",
+  "title": "BakingRL Marketplace Catalogue",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "sequence", "generatedAt", "expiresAt", "sections", "developers", "packages"],
+  "properties": {
+    "schema": { "const": "bakingrl.marketplace/2" },
+    "sequence": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "expiresAt": { "type": "string", "format": "date-time" },
+    "sections": { "$ref": "./sections.schema.json#/$defs/sections" },
+    "developers": {
+      "type": "array",
+      "items": { "$ref": "./developers.schema.json#/$defs/developer" }
+    },
+    "packages": {
+      "type": "array",
+      "items": { "$ref": "./package.schema.json" }
+    }
+  }
+}
