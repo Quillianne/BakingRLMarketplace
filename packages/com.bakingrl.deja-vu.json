@@ -5,7 +5,7 @@
   "status": "active",
   "repo": "https://github.com/Quillianne/BakingRLPlugins",
   "listing": {
-    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v2.0.0/deja-vu/marketplace/listing.json",
+    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v2.0.2/deja-vu/marketplace/listing.json",
     "snapshotSha256": "d5e9fbf2487da429e70e1e3fe1329be5742e395d110a04495a4069298990cf27",
     "snapshot": {
       "schema": "bakingrl.marketplace-listing/2",
@@ -98,7 +98,7 @@
     },
     {
       "version": "2.0.0",
-      "status": "active",
+      "status": "yanked",
       "channel": "stable",
       "runtimeApi": "2.3.0",
       "minBakingrlVersion": "0.10.1",
@@ -167,6 +167,78 @@
         }
       ],
       "reviewedAt": "2026-07-16T17:24:41Z"
+    },
+    {
+      "version": "2.0.1",
+      "status": "active",
+      "channel": "stable",
+      "runtimeApi": "2.3.0",
+      "minBakingrlVersion": "0.10.2",
+      "runtime": {
+        "node": true,
+        "sidecars": [],
+        "webviews": []
+      },
+      "dependencies": [
+        {
+          "packageId": "bakingrl.layout-studio",
+          "version": "^1.0.0",
+          "optional": false
+        }
+      ],
+      "permissions": {
+        "bus": {
+          "read": [
+            "UpdateState",
+            "MatchCreated",
+            "MatchInitialized",
+            "MatchDestroyed",
+            "plugin.com.bakingrl.deja-vu.state"
+          ],
+          "publish": [
+            "plugin.com.bakingrl.deja-vu.state"
+          ]
+        },
+        "registry": {
+          "read": [
+            "plugin.com.bakingrl.deja-vu.state"
+          ],
+          "write": [
+            "plugin.com.bakingrl.deja-vu.state"
+          ]
+        },
+        "network": {
+          "http": [],
+          "websocket": [],
+          "listen": []
+        },
+        "storage": {
+          "read": [
+            "deja-vu-state.json"
+          ],
+          "write": [
+            "deja-vu-state.json"
+          ]
+        }
+      },
+      "nativeCapabilities": {
+        "node": {
+          "platforms": [
+            "any"
+          ]
+        },
+        "sidecars": [],
+        "surfaces": []
+      },
+      "artifacts": [
+        {
+          "platform": "any",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v2.0.2/com.bakingrl.deja-vu-2.0.1.brlp",
+          "bundleSha256": "260a9d64dfa5016aec72086f8fcf74560464dedcd502cc91a1f97bdc5d53e979",
+          "signingKeyId": "quillianne-release-1"
+        }
+      ],
+      "reviewedAt": "2026-07-17T07:44:34Z"
     }
   ]
 }

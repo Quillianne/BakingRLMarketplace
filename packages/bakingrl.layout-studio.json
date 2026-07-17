@@ -5,7 +5,7 @@
   "status": "active",
   "repo": "https://github.com/Quillianne/BakingRLPlugins",
   "listing": {
-    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v2.0.0/layout-studio/marketplace/listing.json",
+    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v2.0.2/layout-studio/marketplace/listing.json",
     "snapshotSha256": "c4a9d98bc3fd51a58d0a0da22bdd8590641af59a2c6077878ebfd8c0db7c6039",
     "snapshot": {
       "schema": "bakingrl.marketplace-listing/2",
@@ -34,7 +34,7 @@
   "versions": [
     {
       "version": "1.0.0",
-      "status": "active",
+      "status": "yanked",
       "channel": "stable",
       "runtimeApi": "2.3.0",
       "minBakingrlVersion": "0.10.1",
@@ -103,6 +103,78 @@
         }
       ],
       "reviewedAt": "2026-07-16T17:24:41Z"
+    },
+    {
+      "version": "1.0.1",
+      "status": "active",
+      "channel": "stable",
+      "runtimeApi": "2.3.0",
+      "minBakingrlVersion": "0.10.2",
+      "runtime": {
+        "node": true,
+        "sidecars": [],
+        "webviews": [
+          {
+            "id": "studio",
+            "kind": "tool"
+          }
+        ]
+      },
+      "dependencies": [
+        {
+          "packageId": "bakingrl.stats-extended",
+          "version": "^1.0.0",
+          "optional": false
+        }
+      ],
+      "permissions": {
+        "bus": {
+          "read": [
+            "UpdateState"
+          ],
+          "publish": [
+            "plugin.bakingrl.layout-studio.changed"
+          ]
+        },
+        "registry": {
+          "read": [
+            "plugin.bakingrl.stats-extended.*",
+            "plugin.bakingrl.broadcast-visuals.*"
+          ],
+          "write": []
+        },
+        "network": {
+          "http": [],
+          "websocket": [],
+          "listen": []
+        },
+        "storage": {
+          "read": [
+            "layouts.json"
+          ],
+          "write": [
+            "layouts.json"
+          ]
+        }
+      },
+      "nativeCapabilities": {
+        "node": {
+          "platforms": [
+            "any"
+          ]
+        },
+        "sidecars": [],
+        "surfaces": []
+      },
+      "artifacts": [
+        {
+          "platform": "any",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v2.0.2/bakingrl.layout-studio-1.0.1.brlp",
+          "bundleSha256": "2435c0b928196e06697d50deff7e0fc2e6a140d844550c55fb542426ef5b8dd3",
+          "signingKeyId": "quillianne-release-1"
+        }
+      ],
+      "reviewedAt": "2026-07-17T07:44:34Z"
     }
   ]
 }

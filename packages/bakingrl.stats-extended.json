@@ -5,7 +5,7 @@
   "status": "active",
   "repo": "https://github.com/Quillianne/BakingRLPlugins",
   "listing": {
-    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v2.0.0/stats-extended/marketplace/listing.json",
+    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v2.0.2/stats-extended/marketplace/listing.json",
     "snapshotSha256": "0b0ab32dbc027a4ea7c18b57997006242a678fa3611e4a674f9be6c2d58501c9",
     "snapshot": {
       "schema": "bakingrl.marketplace-listing/2",
@@ -34,7 +34,7 @@
   "versions": [
     {
       "version": "1.0.0",
-      "status": "active",
+      "status": "yanked",
       "channel": "stable",
       "runtimeApi": "2.3.0",
       "minBakingrlVersion": "0.10.1",
@@ -120,6 +120,95 @@
         }
       ],
       "reviewedAt": "2026-07-16T17:24:41Z"
+    },
+    {
+      "version": "1.0.1",
+      "status": "active",
+      "channel": "stable",
+      "runtimeApi": "2.3.0",
+      "minBakingrlVersion": "0.10.2",
+      "runtime": {
+        "node": true,
+        "sidecars": [],
+        "webviews": [
+          {
+            "id": "statisticsDashboard",
+            "kind": "tool"
+          }
+        ]
+      },
+      "dependencies": [],
+      "permissions": {
+        "bus": {
+          "read": [
+            "UpdateState",
+            "BallHit",
+            "ClockUpdatedSeconds",
+            "CountdownBegin",
+            "CrossbarHit",
+            "GoalScored",
+            "GoalReplayEnd",
+            "GoalReplayStart",
+            "MatchCreated",
+            "MatchDestroyed",
+            "MatchInitialized",
+            "MatchEnded",
+            "MatchPaused",
+            "MatchUnpaused",
+            "PodiumStart",
+            "ReplayCreated",
+            "RoundStarted",
+            "StatfeedEvent",
+            "plugin.bakingrl.stats-extended.*"
+          ],
+          "publish": [
+            "plugin.bakingrl.stats-extended.*"
+          ]
+        },
+        "registry": {
+          "read": [
+            "plugin.bakingrl.stats-extended.*"
+          ],
+          "write": [
+            "plugin.bakingrl.stats-extended.*"
+          ]
+        },
+        "network": {
+          "http": [],
+          "websocket": [],
+          "listen": []
+        },
+        "storage": {
+          "read": [
+            "series-state.json",
+            "player-stats-state.json",
+            "cage-stats-state.json"
+          ],
+          "write": [
+            "series-state.json",
+            "player-stats-state.json",
+            "cage-stats-state.json"
+          ]
+        }
+      },
+      "nativeCapabilities": {
+        "node": {
+          "platforms": [
+            "any"
+          ]
+        },
+        "sidecars": [],
+        "surfaces": []
+      },
+      "artifacts": [
+        {
+          "platform": "any",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v2.0.2/bakingrl.stats-extended-1.0.1.brlp",
+          "bundleSha256": "b3a2d85de830d4dc64992a4696049fd05956756bca9e2c0940cc5cb2da0d074c",
+          "signingKeyId": "quillianne-release-1"
+        }
+      ],
+      "reviewedAt": "2026-07-17T07:44:34Z"
     }
   ]
 }

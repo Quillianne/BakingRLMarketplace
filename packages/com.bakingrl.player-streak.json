@@ -5,7 +5,7 @@
   "status": "active",
   "repo": "https://github.com/Quillianne/BakingRLPlugins",
   "listing": {
-    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v2.0.0/player-streak/marketplace/listing.json",
+    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v2.0.2/player-streak/marketplace/listing.json",
     "snapshotSha256": "e6226496e04c9493661d97f6eefb5e38f6f8d0c492d21ed9747b4e827ed1c57c",
     "snapshot": {
       "schema": "bakingrl.marketplace-listing/2",
@@ -109,7 +109,7 @@
     },
     {
       "version": "2.0.0",
-      "status": "active",
+      "status": "yanked",
       "channel": "stable",
       "runtimeApi": "2.3.0",
       "minBakingrlVersion": "0.10.1",
@@ -187,6 +187,87 @@
         }
       ],
       "reviewedAt": "2026-07-16T17:24:41Z"
+    },
+    {
+      "version": "2.0.1",
+      "status": "active",
+      "channel": "stable",
+      "runtimeApi": "2.3.0",
+      "minBakingrlVersion": "0.10.2",
+      "runtime": {
+        "node": true,
+        "sidecars": [],
+        "webviews": []
+      },
+      "dependencies": [
+        {
+          "packageId": "bakingrl.stats-extended",
+          "version": "^1.0.0",
+          "optional": false
+        },
+        {
+          "packageId": "bakingrl.layout-studio",
+          "version": "^1.0.0",
+          "optional": false
+        }
+      ],
+      "permissions": {
+        "bus": {
+          "read": [
+            "MatchCreated",
+            "MatchInitialized",
+            "MatchEnded",
+            "MatchDestroyed",
+            "plugin.bakingrl.stats-extended.sequence",
+            "plugin.bakingrl.stats-extended.player-stats",
+            "plugin.com.bakingrl.player-streak.state"
+          ],
+          "publish": [
+            "plugin.com.bakingrl.player-streak.state"
+          ]
+        },
+        "registry": {
+          "read": [
+            "plugin.bakingrl.stats-extended.sequence",
+            "plugin.bakingrl.stats-extended.player-stats",
+            "plugin.com.bakingrl.player-streak.state"
+          ],
+          "write": [
+            "plugin.com.bakingrl.player-streak.state"
+          ]
+        },
+        "network": {
+          "http": [],
+          "websocket": [],
+          "listen": []
+        },
+        "storage": {
+          "read": [
+            "player-streak-state.json"
+          ],
+          "write": [
+            "player-streak-state.json"
+          ]
+        }
+      },
+      "nativeCapabilities": {
+        "node": {
+          "platforms": [
+            "any"
+          ]
+        },
+        "sidecars": [],
+        "surfaces": []
+      },
+      "artifacts": [
+        {
+          "platform": "any",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v2.0.2/com.bakingrl.player-streak-2.0.1.brlp",
+          "bundleSha256": "bb5b6ff01f2cf3fdf28e47011c490bcd541959d4f2124959646738c03b79f7a3",
+          "signingKeyId": "quillianne-release-1"
+        }
+      ],
+      "reviewedAt": "2026-07-17T07:44:34Z"
     }
   ]
 }

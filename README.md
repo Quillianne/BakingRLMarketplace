@@ -40,7 +40,8 @@ Revoked records require a reason and timestamp. A package version references its
 developer key by `signingKeyId`; public keys are not duplicated in artifacts.
 
 The historical 1.0.5 bundles target Runtime API 2.0 and remain yanked. The
-reviewed `plugins-v2.0.0` release introduces the Runtime API 2.3 product stack:
+superseded `plugins-v2.0.0` records target Runtime API 2.3 and are also yanked.
+The reviewed `plugins-v2.0.2` release provides the current Runtime API 2.3 stack:
 Extended Statistics, Layout Studio, Broadcast Visuals, OBS Gateway, Deja Vu,
 and PlayerStreak. The first-run selection offers the four core broadcast
 packages; dependency resolution remains transactional in the BakingRL host.
@@ -49,11 +50,11 @@ packages; dependency resolution remains transactional in the BakingRL host.
 
 ```json
 {
-  "version": "2.0.0",
+  "version": "2.0.2",
   "status": "active",
   "channel": "stable",
   "runtimeApi": "2.3.0",
-  "minBakingrlVersion": "0.10.1",
+  "minBakingrlVersion": "0.10.2",
   "runtime": {
     "node": true,
     "sidecars": [],

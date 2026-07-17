@@ -5,7 +5,7 @@
   "status": "active",
   "repo": "https://github.com/Quillianne/BakingRLPlugins",
   "listing": {
-    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v2.0.0/obs-gateway/marketplace/listing.json",
+    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v2.0.2/obs-gateway/marketplace/listing.json",
     "snapshotSha256": "e334208d603e47d203abc2e9dd17dcd8f0c561aa07362d50fe17d3c7ae8a6677",
     "snapshot": {
       "schema": "bakingrl.marketplace-listing/2",
@@ -124,7 +124,7 @@
     },
     {
       "version": "2.0.0",
-      "status": "active",
+      "status": "yanked",
       "channel": "stable",
       "runtimeApi": "2.3.0",
       "minBakingrlVersion": "0.10.1",
@@ -231,6 +231,116 @@
         }
       ],
       "reviewedAt": "2026-07-16T17:24:41Z"
+    },
+    {
+      "version": "2.0.2",
+      "status": "active",
+      "channel": "stable",
+      "runtimeApi": "2.3.0",
+      "minBakingrlVersion": "0.10.2",
+      "runtime": {
+        "node": true,
+        "sidecars": [
+          {
+            "id": "gateway",
+            "platforms": [
+              "darwin-arm64",
+              "darwin-x64",
+              "linux-x64",
+              "windows-x64"
+            ]
+          }
+        ],
+        "webviews": [
+          {
+            "id": "obsGatewayConfig",
+            "kind": "settings"
+          }
+        ]
+      },
+      "dependencies": [
+        {
+          "packageId": "bakingrl.layout-studio",
+          "version": "^1.0.0",
+          "optional": false
+        }
+      ],
+      "permissions": {
+        "bus": {
+          "read": [
+            "plugin.bakingrl.layout-studio.changed"
+          ],
+          "publish": []
+        },
+        "registry": {
+          "read": [],
+          "write": []
+        },
+        "network": {
+          "http": [],
+          "websocket": [],
+          "listen": [
+            {
+              "transport": "tcp",
+              "host": "127.0.0.1",
+              "ports": "*"
+            }
+          ]
+        },
+        "storage": {
+          "read": [],
+          "write": []
+        }
+      },
+      "nativeCapabilities": {
+        "node": {
+          "platforms": [
+            "darwin-arm64",
+            "darwin-x64",
+            "linux-x64",
+            "windows-x64"
+          ]
+        },
+        "sidecars": [
+          {
+            "id": "gateway",
+            "platforms": [
+              "darwin-arm64",
+              "darwin-x64",
+              "linux-x64",
+              "windows-x64"
+            ]
+          }
+        ],
+        "surfaces": []
+      },
+      "artifacts": [
+        {
+          "platform": "darwin-arm64",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v2.0.2/bakingrl.obs-gateway-2.0.2-darwin-arm64.brlp",
+          "bundleSha256": "333aa69a033cbf977b3b37b932b9909987ef8daf09a0ac21934e0515f79b07eb",
+          "signingKeyId": "quillianne-release-1"
+        },
+        {
+          "platform": "darwin-x64",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v2.0.2/bakingrl.obs-gateway-2.0.2-darwin-x64.brlp",
+          "bundleSha256": "e4a922c23e730abe27c0dc0c5de6c023b4d701cfef1800b36e3f6e58394fd579",
+          "signingKeyId": "quillianne-release-1"
+        },
+        {
+          "platform": "linux-x64",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v2.0.2/bakingrl.obs-gateway-2.0.2-linux-x64.brlp",
+          "bundleSha256": "8976d088bc2dfd8f226a8d6dd058286bcf69e3f03b8f7713ecd809b6497d3d7e",
+          "signingKeyId": "quillianne-release-1"
+        },
+        {
+          "platform": "windows-x64",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v2.0.2/bakingrl.obs-gateway-2.0.2-windows-x64.brlp",
+          "bundleSha256": "ffb4c90dc33f52728cb0bc17b5749d8ba657ab7d068f6eab37ebbb28a1f9616a",
+          "signingKeyId": "quillianne-release-1"
+        }
+      ],
+      "reviewedAt": "2026-07-17T07:44:34Z"
     }
   ]
 }

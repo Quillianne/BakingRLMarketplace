@@ -5,7 +5,7 @@
   "status": "active",
   "repo": "https://github.com/Quillianne/BakingRLPlugins",
   "listing": {
-    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v2.0.0/broadcast-visuals/marketplace/listing.json",
+    "sourceUrl": "https://raw.githubusercontent.com/Quillianne/BakingRLPlugins/plugins-v2.0.2/broadcast-visuals/marketplace/listing.json",
     "snapshotSha256": "e1f9698a3caf02fa5853c7519dfc408ec2ae59a30b7ea875d7467b65bb5dc2b3",
     "snapshot": {
       "schema": "bakingrl.marketplace-listing/2",
@@ -34,7 +34,7 @@
   "versions": [
     {
       "version": "1.0.0",
-      "status": "active",
+      "status": "yanked",
       "channel": "stable",
       "runtimeApi": "2.3.0",
       "minBakingrlVersion": "0.10.1",
@@ -123,6 +123,98 @@
         }
       ],
       "reviewedAt": "2026-07-16T17:24:41Z"
+    },
+    {
+      "version": "1.0.1",
+      "status": "active",
+      "channel": "stable",
+      "runtimeApi": "2.3.0",
+      "minBakingrlVersion": "0.10.2",
+      "runtime": {
+        "node": true,
+        "sidecars": [],
+        "webviews": [
+          {
+            "id": "broadcastControls",
+            "kind": "tool"
+          }
+        ]
+      },
+      "dependencies": [
+        {
+          "packageId": "bakingrl.stats-extended",
+          "version": "^1.0.0",
+          "optional": false
+        },
+        {
+          "packageId": "bakingrl.layout-studio",
+          "version": "^1.0.0",
+          "optional": false
+        }
+      ],
+      "permissions": {
+        "bus": {
+          "read": [
+            "UpdateState",
+            "ClockUpdatedSeconds",
+            "CountdownBegin",
+            "GoalScored",
+            "GoalReplayEnd",
+            "GoalReplayStart",
+            "MatchCreated",
+            "MatchDestroyed",
+            "MatchInitialized",
+            "MatchEnded",
+            "MatchPaused",
+            "MatchUnpaused",
+            "PodiumStart",
+            "ReplayCreated",
+            "RoundStarted",
+            "StatfeedEvent",
+            "plugin.bakingrl.stats-extended.*",
+            "plugin.bakingrl.broadcast-visuals.*"
+          ],
+          "publish": [
+            "plugin.bakingrl.broadcast-visuals.*"
+          ]
+        },
+        "registry": {
+          "read": [
+            "plugin.bakingrl.stats-extended.*",
+            "plugin.bakingrl.broadcast-visuals.*"
+          ],
+          "write": [
+            "plugin.bakingrl.broadcast-visuals.*"
+          ]
+        },
+        "network": {
+          "http": [],
+          "websocket": [],
+          "listen": []
+        },
+        "storage": {
+          "read": [],
+          "write": []
+        }
+      },
+      "nativeCapabilities": {
+        "node": {
+          "platforms": [
+            "any"
+          ]
+        },
+        "sidecars": [],
+        "surfaces": []
+      },
+      "artifacts": [
+        {
+          "platform": "any",
+          "bundleUrl": "https://github.com/Quillianne/BakingRLPlugins/releases/download/plugins-v2.0.2/bakingrl.broadcast-visuals-1.0.1.brlp",
+          "bundleSha256": "aaa97aa7fd282b8c69f775dabe455597519fffc7cdef01472fd1310db676eb7f",
+          "signingKeyId": "quillianne-release-1"
+        }
+      ],
+      "reviewedAt": "2026-07-17T07:44:34Z"
     }
   ]
 }
